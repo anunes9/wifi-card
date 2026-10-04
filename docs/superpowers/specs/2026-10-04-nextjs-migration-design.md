@@ -87,7 +87,7 @@ interface Unit { id: string; ref: string; ssid: string; pass: string; auth: Auth
 interface Options { showRef: boolean; showPayload: boolean; design: Design }
 ```
 
-`id` exists only in memory (`crypto.randomUUID()`). It gives React a stable key, so typing never loses focus.
+`id` exists only in memory, taken from a module counter (`'u1'`, `'u2'`, …). `crypto.randomUUID()` isn't used because it only works in secure contexts. It gives React a stable key, so typing never loses focus.
 
 ### Reducer (`lib/units.ts`, pure)
 
@@ -101,8 +101,7 @@ State is `{ units: Unit[]; options: Options }`. Actions:
   - In replace mode the list becomes the plan's non-skipped units.
   - In append and merge mode, `update` items replace the unit at `at` and `add` items are appended. Afterwards, units with no content are dropped.
   - An empty result becomes `[blank()]`. Units coming from the plan get new ids.
-- `setOption(key, value)`.
-- `hydrate(state)`: replaces the whole state after loading.
+- `setOptions(patch)`: merges into `options`.
 
 "Has content" means `ref || ssid || pass`. "Active" means `ssid.trim() !== ''`.
 
@@ -119,9 +118,10 @@ State is `{ units: Unit[]; options: Options }`. Actions:
 
 The static export is pre-rendered at build time, when `localStorage` doesn't exist.
 
-1. `WifiCardsApp` starts with a default state and `hydrated = false`. It renders the masthead and the static `h2`/`.lede` text. The `.editor`, `.preview-note` and `.sheet-scroll` render only once `hydrated` is true.
-2. A mount effect calls `loadState()`, dispatches `hydrate`, and sets `hydrated = true`.
-3. A save effect on `[state]` calls `saveState(state)` **only when `hydrated` is true**. This guard stops the first render's default state from overwriting saved data.
+1. The reducer's lazy initializer returns `initialState()` on the server and `loadState()` in the browser.
+2. A `useHydrated()` hook (`useSyncExternalStore` with server snapshot `false`, client snapshot `true`) returns `false` during the pre-render and the hydration pass, and `true` after that.
+3. While `hydrated` is false, only the static parts render: the masthead, both `h2`s, `.lede` and `.preview-note`. `.editor` and `.sheet-scroll` render only once `hydrated` is true. Because nothing state-dependent renders during hydration, the server and client output can't disagree.
+4. A save effect on `[hydrated, state]` calls `saveState(state)` **only when `hydrated` is true**. This guard stops a default state from ever being written over saved data.
 
 ### Bulk import
 
