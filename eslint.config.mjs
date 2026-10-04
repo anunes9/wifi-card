@@ -12,6 +12,5 @@ export default defineConfig([
       '@next/next/no-img-element': 'off',
     },
   },
-  // js/ and dist/ are the legacy app, kept as the reference until the migration ends.
-  globalIgnores(['.next/**', 'out/**', 'next-env.d.ts', 'js/**', 'dist/**']),
+  globalIgnores(['.next/**', 'out/**', 'next-env.d.ts']),
 ]);
