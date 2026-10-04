@@ -189,9 +189,11 @@ export function applyMessage(plan: Plan): string {
   return msg + ' Check the warnings under the table before printing.';
 }
 
+// Leading or trailing spaces are quoted too: unquoted fields are trimmed on
+// the way back in, which would silently change the password.
 export function csvField(s: string): string {
   s = String(s ?? '');
-  return /[",;\t\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  return /[",;\t\n\r]|^\s|\s$/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
 }
 
 export function listAsCsv(units: UnitData[]): string {

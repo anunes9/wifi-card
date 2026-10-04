@@ -214,6 +214,12 @@ describe('listAsCsv', () => {
     );
   });
 
+  it('keeps leading and trailing spaces through a round trip', () => {
+    const spaced = [unit({ ref: 'S', ssid: ' Net', pass: ' secret1 ' })];
+    const plan = buildPlan(listAsCsv(spaced), 'replace', [])!;
+    expect(plan.items.map((it) => it.u)).toEqual(spaced);
+  });
+
   it('reads back through buildPlan to the same units', () => {
     const plan = buildPlan(listAsCsv(units), 'replace', [])!;
     expect(plan.header).toBe(true);
