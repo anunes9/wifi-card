@@ -1,11 +1,14 @@
 'use client';
 
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { loadState, saveState } from '@/lib/storage';
 import { activeUnits, initialState, reducer } from '@/lib/units';
 import type { AppState } from '@/lib/types';
 import Options from './Options';
 import Sheet from './Sheet';
+import Toolbar from './Toolbar';
+import UnitsTable from './UnitsTable';
+import Warnings from './Warnings';
 import { useHydrated } from './useHydrated';
 
 // The static export is pre-rendered where there is no localStorage, so the
@@ -18,6 +21,7 @@ function startingState(): AppState {
 
 export default function WifiCardsApp() {
   const [state, dispatch] = useReducer(reducer, undefined, startingState);
+  const [, setBulkOpen] = useState(false);
   const hydrated = useHydrated();
 
   // Saving only once hydrated means a default state can never be written over
@@ -27,6 +31,10 @@ export default function WifiCardsApp() {
   }, [hydrated, state]);
 
   const active = activeUnits(state.units);
+
+  const clear = () => {
+    if (window.confirm('Remove every unit from the list?')) dispatch({ type: 'clear' });
+  };
 
   return (
     <>
@@ -46,7 +54,15 @@ export default function WifiCardsApp() {
 
         {hydrated ? (
           <div className="editor">
+            <UnitsTable units={state.units} dispatch={dispatch} />
+            <Toolbar
+              count={active.length}
+              onAdd={() => dispatch({ type: 'add' })}
+              onToggleBulk={() => setBulkOpen((o) => !o)}
+              onClear={clear}
+            />
             <Options options={state.options} dispatch={dispatch} />
+            <Warnings units={active} />
           </div>
         ) : null}
 
