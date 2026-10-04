@@ -4,6 +4,7 @@ import { useEffect, useReducer, useState } from 'react';
 import { loadState, saveState } from '@/lib/storage';
 import { activeUnits, initialState, reducer } from '@/lib/units';
 import type { AppState } from '@/lib/types';
+import BulkImport from './BulkImport';
 import Options from './Options';
 import Sheet from './Sheet';
 import Toolbar from './Toolbar';
@@ -21,7 +22,7 @@ function startingState(): AppState {
 
 export default function WifiCardsApp() {
   const [state, dispatch] = useReducer(reducer, undefined, startingState);
-  const [, setBulkOpen] = useState(false);
+  const [bulkOpen, setBulkOpen] = useState(false);
   const hydrated = useHydrated();
 
   // Saving only once hydrated means a default state can never be written over
@@ -61,6 +62,7 @@ export default function WifiCardsApp() {
               onToggleBulk={() => setBulkOpen((o) => !o)}
               onClear={clear}
             />
+            <BulkImport open={bulkOpen} onClose={() => setBulkOpen(false)} units={state.units} dispatch={dispatch} />
             <Options options={state.options} dispatch={dispatch} />
             <Warnings units={active} />
           </div>
