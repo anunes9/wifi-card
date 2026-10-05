@@ -33,10 +33,11 @@ The same cards can be made by Claude from a CSV. `skill/` holds the skill: a CLI
 through `react-dom/server`, and writes a self-contained HTML page plus a PDF
 (printed with headless Chromium when one is available).
 
-    npm run skill         # -> dist/skill/wifi-cards/ and dist/wifi-cards.zip
+    npm run skill         # -> dist/wifi-cards-plugin.zip (plugin) and dist/wifi-cards.zip (skill)
 
-Upload `dist/wifi-cards.zip` in Claude under Settings → Capabilities → Skills, then
-send Claude a CSV and ask for WiFi cards. For Claude Code, copy
+In Claude (chat or Cowork), upload `dist/wifi-cards-plugin.zip` under
+Customize → Plugins → Add → Upload plugin, with code execution turned on in
+Settings → Capabilities. Then send Claude a CSV and ask for WiFi cards. For Claude Code, copy
 `dist/skill/wifi-cards/` into `~/.claude/skills/` (or a project's `.claude/skills/`).
 Rebuild and re-upload after changing the cards, the CSS or the fonts.
 

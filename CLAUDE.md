@@ -13,7 +13,7 @@ npm run dev                          # http://localhost:3000
 npm run build                        # static export to out/ (the deploy artifact; drag onto Netlify)
 npm run lint
 npm test                             # Vitest over lib/ and skill/
-npm run skill                        # bundle the Claude skill to dist/ (and dist/wifi-cards.zip)
+npm run skill                        # bundle the Claude skill to dist/, zipped as a skill and as a plugin
 npx vitest run lib/csv.test.ts       # one file
 npx vitest run -t "merges by reference"   # one test by name
 npx tsc --noEmit
@@ -37,7 +37,7 @@ Node is pinned in `.nvmrc`. Preview a build with `npx serve out`. Opening `out/i
 
 ### The Claude skill
 
-`skill/` packages the same cards as a Claude skill, so someone can send Claude a CSV and get a printable PDF back. `skill/render.tsx` runs `buildPlan` (replace mode), `checkAll` and `Sheet` through `renderToStaticMarkup`, and inlines `app/globals.css`, the fonts and the images as data URIs. `skill/cli.ts` reads the CSV, writes the HTML, prints a PDF with headless Chromium when it finds one, and prints a JSON report. `scripts/build-skill.mjs` bundles the CLI with React (rolldown, already a dependency via Vitest) into `dist/skill/wifi-cards/scripts/wificards.mjs`, so the skill needs only Node, then copies `SKILL.md`, the CSS, the fonts and the images, and zips it. `dist/` is not committed. Any change to the cards, the CSS or the fonts needs a rebuild and re-upload of the zip.
+`skill/` packages the same cards as a Claude skill, so someone can send Claude a CSV and get a printable PDF back. `skill/render.tsx` runs `buildPlan` (replace mode), `checkAll` and `Sheet` through `renderToStaticMarkup`, and inlines `app/globals.css`, the fonts and the images as data URIs. `skill/cli.ts` reads the CSV, writes the HTML, prints a PDF with headless Chromium when it finds one, and prints a JSON report. `scripts/build-skill.mjs` bundles the CLI with React (rolldown, already a dependency via Vitest) into `dist/skill/wifi-cards/scripts/wificards.mjs`, so the skill needs only Node, then copies `SKILL.md`, the CSS, the fonts and the images, and zips it twice: as a skill (`dist/wifi-cards.zip`) and inside a plugin with its `.claude-plugin/plugin.json` (`dist/wifi-cards-plugin.zip`). `dist/` is not committed. Any change to the cards, the CSS or the fonts needs a rebuild and re-upload of the zip.
 
 ### The DOM is part of the print contract
 
