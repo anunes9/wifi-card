@@ -18,7 +18,7 @@ export default function CardDesign2({ unit, qr, unitRef, payload }: CardProps) {
         <div className="c-tail"></div>
       </div>
       <div className="c-contact">
-        <p className="c-contact-say">Se precisar de alguma coisa, <span className="ln">contacte<span className="hy">-</span>nos.</span></p>
+        <p className="c-contact-say">Se precisar de alguma coisa, contacte<span className="hy">-</span>nos.</p>
         <p className="c-contact-say2">If you need anything, contact us.</p>
         <p className="c-contact-tel">+351 210 924 102</p>
         <p className="c-contact-tel">info@lisbeyond.com</p>
