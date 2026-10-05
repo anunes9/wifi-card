@@ -1,6 +1,7 @@
 import CardFields, { type CardProps } from './CardFields';
 
-/* Navy, speech bubble: the credentials in a bubble over the Lisbon skyline. */
+/* Navy, speech bubble: the credentials in a bubble over the Lisbon skyline,
+   with the contacts bottom left and the wordmark under the skyline's seagull. */
 export default function CardDesign2({ unit, qr, unitRef, payload }: CardProps) {
   return (
     <div className="c-frame">
@@ -16,6 +17,13 @@ export default function CardDesign2({ unit, qr, unitRef, payload }: CardProps) {
         </div>
         <div className="c-tail"></div>
       </div>
+      <div className="c-contact">
+        <p className="c-contact-say">Se precisar de alguma coisa, contacte<span className="hy">-</span>nos.</p>
+        <p className="c-contact-say2">If you need anything, contact us.</p>
+        <p className="c-contact-tel">+351 210 924 102</p>
+        <p className="c-contact-tel">info@lisbeyond.com</p>
+      </div>
+      <img className="c-wordmark" src="/img/wordmark.png" alt="Lisbeyond" />
       {unitRef ? <p className="c-ref">{unitRef}</p> : null}
     </div>
   );
