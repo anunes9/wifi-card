@@ -3,24 +3,24 @@
    run time" promise and leaked every visitor's IP to Google. */
 /* Barlow + Barlow Condensed, inlined (latin subset) — no external requests.
    Previously an @import from fonts.googleapis.com. */
-@font-face { font-family:'Barlow'; src:url('../assets/fonts/Barlow-400-italic.woff2') format('woff2'); font-weight:400; font-style:italic; font-display:swap; }
-@font-face { font-family:'Barlow'; src:url('../assets/fonts/Barlow-400.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
-@font-face { font-family:'Barlow'; src:url('../assets/fonts/Barlow-600.woff2') format('woff2'); font-weight:600; font-style:normal; font-display:swap; }
-@font-face { font-family:'Barlow Condensed'; src:url('../assets/fonts/BarlowCondensed-400.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
-@font-face { font-family:'Barlow Condensed'; src:url('../assets/fonts/BarlowCondensed-600.woff2') format('woff2'); font-weight:600; font-style:normal; font-display:swap; }
-@font-face { font-family:'Barlow Condensed'; src:url('../assets/fonts/BarlowCondensed-700.woff2') format('woff2'); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:'Barlow'; src:url('/fonts/Barlow-400-italic.woff2') format('woff2'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'Barlow'; src:url('/fonts/Barlow-400.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Barlow'; src:url('/fonts/Barlow-600.woff2') format('woff2'); font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:'Barlow Condensed'; src:url('/fonts/BarlowCondensed-400.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Barlow Condensed'; src:url('/fonts/BarlowCondensed-600.woff2') format('woff2'); font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:'Barlow Condensed'; src:url('/fonts/BarlowCondensed-700.woff2') format('woff2'); font-weight:700; font-style:normal; font-display:swap; }
 
 /* Kento + Lexend, inlined from the renovations build — the house type system */
-@font-face { font-family:'Kento'; src:url('../assets/fonts/Kento-400.ttf') format('truetype'); font-weight:400; font-style:normal; }
-@font-face { font-family:'Lexend'; src:url('../assets/fonts/Lexend-200.ttf') format('truetype'); font-weight:200; font-style:normal; }
-@font-face { font-family:'Lexend'; src:url('../assets/fonts/Lexend-300.ttf') format('truetype'); font-weight:300; font-style:normal; }
-@font-face { font-family:'Lexend'; src:url('../assets/fonts/Lexend-400.ttf') format('truetype'); font-weight:400; font-style:normal; }
-@font-face { font-family:'Lexend'; src:url('../assets/fonts/Lexend-500.ttf') format('truetype'); font-weight:500; font-style:normal; }
-@font-face { font-family:'Lexend'; src:url('../assets/fonts/Lexend-600.ttf') format('truetype'); font-weight:600; font-style:normal; }
-@font-face { font-family:'Lexend'; src:url('../assets/fonts/Lexend-700.ttf') format('truetype'); font-weight:700; font-style:normal; }
+@font-face { font-family:'Kento'; src:url('/fonts/Kento-400.ttf') format('truetype'); font-weight:400; font-style:normal; }
+@font-face { font-family:'Lexend'; src:url('/fonts/Lexend-200.ttf') format('truetype'); font-weight:200; font-style:normal; }
+@font-face { font-family:'Lexend'; src:url('/fonts/Lexend-300.ttf') format('truetype'); font-weight:300; font-style:normal; }
+@font-face { font-family:'Lexend'; src:url('/fonts/Lexend-400.ttf') format('truetype'); font-weight:400; font-style:normal; }
+@font-face { font-family:'Lexend'; src:url('/fonts/Lexend-500.ttf') format('truetype'); font-weight:500; font-style:normal; }
+@font-face { font-family:'Lexend'; src:url('/fonts/Lexend-600.ttf') format('truetype'); font-weight:600; font-style:normal; }
+@font-face { font-family:'Lexend'; src:url('/fonts/Lexend-700.ttf') format('truetype'); font-weight:700; font-style:normal; }
 
 /* LE Amalfi, the hand — design 2 only */
-@font-face { font-family:'Amalfi'; src:url('../assets/fonts/Amalfi-400.otf') format('opentype'); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:'Amalfi'; src:url('/fonts/Amalfi-400.otf') format('opentype'); font-weight:400; font-style:normal; font-display:block; }
 
 
 :root{

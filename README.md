@@ -1,25 +1,29 @@
 # WiFi Cards — Lisbeyond Ops
 
 Prints one WiFi card per apartment (A5 landscape, two per A4 sheet) with a QR code
-that joins the network. Runs entirely in the browser: no backend, no network calls,
-no dependencies. Data is kept in `localStorage` (key `lisbeyond.wificards.v1`).
+that joins the network. Runs entirely in the browser: no backend, no network calls
+at run time. Data is kept in `localStorage` (key `lisbeyond.wificards.v1`).
+
+Built with Next.js as a static export.
 
 ## Structure
-    index.html        markup (dev version — loads the files below)
-    css/style.css     all styles, incl. print layout and @font-face
-    js/qr.js          self-contained QR encoder (byte mode, v1–40, ECC L/M/Q/H) + WIFI: payload
-    js/app.js         editor, cards, guardrails, bulk CSV import
-    assets/fonts/     Barlow, Barlow Condensed, Lexend, Kento, Amalfi
-    assets/img/       logo.png, skyline.png
-    build.py          inlines everything into dist/index.html (single deployable file)
-    dist/index.html   built output — this is what to upload to Netlify
+    app/              layout, the single page, globals.css (all styles, incl. print layout and @font-face)
+    components/       React UI: units table, toolbar, bulk CSV import, options, warnings, card sheet
+    lib/              pure logic with tests: QR encoder, WIFI: payload, CSV import, checks, state, storage
+    public/fonts/     Barlow, Barlow Condensed, Lexend, Kento, Amalfi
+    public/img/       logo.png, skyline.png
 
 ## Develop
-Open `index.html` directly, or serve the folder (`python3 -m http.server`).
+    npm install
+    npm run dev           # http://localhost:3000
+    npm test              # Vitest, lib/ only
+    npm run lint
 
 ## Build & deploy
-    python3 build.py        # -> dist/index.html
-Drag the `dist/` folder onto Netlify (or any static host).
+    npm run build         # -> out/
+Drag the `out/` folder onto Netlify (or any static host). To preview the build
+locally, run `npx serve out`. Opening `out/index.html` straight from disk does not
+work, because its scripts and styles load from `/_next/...`.
 
 ## Key details
 - QR payload: `WIFI:T:<WPA|WEP|nopass>;S:<ssid>;P:<pass>;H:true;;` with `\ ; , : "` escaped. ECC level Q.
