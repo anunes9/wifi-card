@@ -231,8 +231,8 @@ table.preview .why{display:block;color:var(--muted);font-size:12px;margin-top:2p
 .card.d2 .c-contact-say .hy{font-family:'Lexend',sans-serif}
 .card.d2 .c-contact-say2{font-family:'Kento',sans-serif;text-transform:uppercase;
   letter-spacing:.06em;font-size:8pt;color:var(--navy);margin:0 0 3mm}
-.card.d2 .c-contact-tel{font-family:'Kento',sans-serif;letter-spacing:.06em;
-  font-size:11pt;line-height:1.2;color:var(--navy);margin:0}
+.card.d2 .c-contact-tel{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  font-weight:500;font-size:11pt;line-height:1.2;color:var(--navy);margin:0}
 .card.d2 .c-contact-tel + .c-contact-tel{margin-top:1.5mm}
 .card.d2 .c-wordmark{position:absolute;left:177.7mm;top:106.2mm;width:26mm;
   display:block;background:var(--deck-navy);padding:.6mm 1mm}
