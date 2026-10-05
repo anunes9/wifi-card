@@ -18,7 +18,7 @@ export default function CardDesign2({ unit, qr, unitRef, payload }: CardProps) {
         <div className="c-tail"></div>
       </div>
       <div className="c-contact">
-        <p className="c-contact-name">Lisbeyond</p>
+        <p className="c-contact-say">Se precisar de alguma coisa <span className="ln">contacte<span className="hy">-</span>nos</span></p>
         <p className="c-contact-tel">+351 210 924 102</p>
       </div>
       <img className="c-wordmark" src="/img/wordmark.png" alt="Lisbeyond" />

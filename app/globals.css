@@ -225,10 +225,13 @@ table.preview .why{display:block;color:var(--muted);font-size:12px;margin-top:2p
    The skyline is fixed at full width along the foot, so these mm match it. */
 .card.d2 .c-contact{position:absolute;left:14mm;bottom:18mm;background:var(--deck-cream);
   padding:4mm 7mm;text-align:center}
-.card.d2 .c-contact-name{font-family:'Kento',sans-serif;text-transform:uppercase;
-  letter-spacing:.14em;font-size:8pt;color:var(--deck-red);margin:0 0 1.5mm}
-.card.d2 .c-contact-tel{font-family:'Lexend',sans-serif;font-weight:400;font-size:11pt;
-  line-height:1.2;color:var(--navy);margin:0}
+.card.d2 .c-contact-say{font-family:'Amalfi','Lexend',cursive;color:var(--deck-red);
+  font-size:11pt;line-height:1.3;margin:0 0 2.5mm}
+.card.d2 .c-contact-say .ln{display:block}
+/* Amalfi's hyphen glyph is empty, so the hyphen alone falls back to Lexend */
+.card.d2 .c-contact-say .hy{font-family:'Lexend',sans-serif}
+.card.d2 .c-contact-tel{font-family:'Kento',sans-serif;letter-spacing:.06em;
+  font-size:10pt;line-height:1.2;color:var(--navy);margin:0}
 .card.d2 .c-wordmark{position:absolute;left:177.7mm;top:106.2mm;width:26mm;
   display:block;background:var(--deck-navy);padding:.6mm 1mm}
 
